@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es2016", // La versión más reciente de ECMAScript
+    "module": "commonjs", // Utilizar el sistema de módulos más moderno
+    "outDir": "./dist", // Carpeta de destino para archivos compilados
+    "rootDir": "./src", // Carpeta de origen para archivos TypeScript
+    "strict": true, // Habilitar comprobaciones estrictas
+    "esModuleInterop": true, // Habilitar interoperabilidad de módulos
+    "forceConsistentCasingInFileNames": true, // Enforce consistent casing in file names
+    "baseUrl": ".", // URL base para resolución de módulos
+    "skipLibCheck": true,
+    "removeComments": true,
+    "noImplicitAny": false,
+    "paths": {
+      "@/*": ["src/*"] // Configuración de rutas de importación
+    },
+    "lib": ["dom", "es2015.promise", "es5"]
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
+}
