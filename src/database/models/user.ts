@@ -1,8 +1,8 @@
 import { Schema, model } from "mongoose";
 import bcrypt from "bcryptjs";
 import { User } from "@/interfaces/user.interface";
-const userSchema = new Schema({
-    username: {
+const userSchema = new Schema<User>({
+    name: {
         type: String,
         required: true,
         min: 4,
@@ -22,7 +22,7 @@ const userSchema = new Schema({
     avatar: {
         type:String
     },
-    email: {
+    mail: {
         type: String,
         unique: true,
         required: true,

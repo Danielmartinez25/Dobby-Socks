@@ -4,7 +4,8 @@ export interface User {
     name:string;
     surname:string;
     mail:string;
-    password:void;
+    password:string;
+    avatar:string;
     phone:number;
     cart:[Types.ObjectId];
     encryptPassword(password:string): Promise<string>;
