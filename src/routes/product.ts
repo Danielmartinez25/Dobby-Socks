@@ -1,4 +1,4 @@
-import { hello } from "@/controllers/product";
+import { hello } from "../controllers/product";
 import express from "express";
 const router = express.Router();
 
