@@ -8,21 +8,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.remove = exports.create = exports.update = exports.list = void 0;
-const list = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.send("list");
+const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+const JWT = process.env.JWT;
+exports.default = (payload) => __awaiter(void 0, void 0, void 0, function* () {
+    const token = jsonwebtoken_1.default.sign(payload, JWT || "Dobby-sock", { expiresIn: "1h" });
+    return token;
 });
-exports.list = list;
-const update = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.send("update");
-});
-exports.update = update;
-const create = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.send("create");
-});
-exports.create = create;
-const remove = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.send("delete");
-});
-exports.remove = remove;
