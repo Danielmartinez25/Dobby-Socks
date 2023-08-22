@@ -15,13 +15,27 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const userSchema = new mongoose_1.Schema({
-    username: {
+    name: {
         type: String,
         required: true,
         min: 4,
         lowercase: true
     },
-    email: {
+    surname: {
+        type: String,
+        required: true,
+        min: 4,
+        lowercase: true
+    },
+    phone: {
+        type: Number,
+        required: true,
+        min: 10
+    },
+    avatar: {
+        type: String
+    },
+    mail: {
         type: String,
         unique: true,
         required: true,
@@ -30,15 +44,16 @@ const userSchema = new mongoose_1.Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    cart: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "Cart" }],
 });
 userSchema.methods.encryptPassword = (password) => __awaiter(void 0, void 0, void 0, function* () {
     const salt = yield bcryptjs_1.default.genSalt(10);
     return bcryptjs_1.default.hash(password, salt);
 });
-userSchema.methods.validatePassword = function (password) {
+userSchema.methods.verifyPassword = function (password) {
     return __awaiter(this, void 0, void 0, function* () {
         return yield bcryptjs_1.default.compare(password, this.password);
     });
 };
-exports.default = (0, mongoose_1.model)('User', userSchema);
+exports.default = (0, mongoose_1.model)("User", userSchema);

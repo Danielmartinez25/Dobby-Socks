@@ -12,10 +12,12 @@ const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const connection_1 = require("./database/connection");
 (0, connection_1.connectDB)();
 const app = (0, express_1.default)();
+const product_1 = __importDefault(require("@/routes/product"));
 app.use((0, morgan_1.default)("dev"));
 app.use((0, cookie_parser_1.default)());
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: false }));
+app.use("/api/product", product_1.default);
 const PORT = process.env.PORT || 3001;
 const HOST = process.env.HOST || "http://localhost";
 app.listen(PORT, () => {
