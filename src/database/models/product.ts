@@ -23,8 +23,9 @@ const productSchema = new Schema<Product>({
     user: [{ type: Schema.Types.ObjectId, ref: "User" }],
     type: [{ type: Schema.Types.ObjectId, ref: "Type" }],
 
-},{
-    
+}, {
+    timestamps: true,
+    versionKey: false
 });
 
 export default model<Product>("Product",productSchema);

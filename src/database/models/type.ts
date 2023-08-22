@@ -5,6 +5,9 @@ const typeSchema = new Schema<Type>({
         type:String
     },
     product: {type: Schema.Types.ObjectId,ref:"Product"}
+}, {
+    timestamps: true,
+    versionKey: false
 });
 
 export default model<Type>("Type",typeSchema);

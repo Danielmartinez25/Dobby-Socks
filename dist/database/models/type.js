@@ -6,5 +6,8 @@ const typeSchema = new mongoose_1.Schema({
         type: String
     },
     product: { type: mongoose_1.Schema.Types.ObjectId, ref: "Product" }
+}, {
+    timestamps: true,
+    versionKey: false
 });
 exports.default = (0, mongoose_1.model)("Type", typeSchema);

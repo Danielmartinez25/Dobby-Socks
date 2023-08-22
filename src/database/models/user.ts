@@ -33,6 +33,9 @@ const userSchema = new Schema<User>({
         required: true
     },
     cart: [{ type: Schema.Types.ObjectId, ref: "Cart" }],
+}, {
+    timestamps: true,
+    versionKey: false
 });
 
 userSchema.methods.encryptPassword = async (password:string) : Promise<string> => {

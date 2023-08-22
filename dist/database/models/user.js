@@ -46,6 +46,9 @@ const userSchema = new mongoose_1.Schema({
         required: true
     },
     cart: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "Cart" }],
+}, {
+    timestamps: true,
+    versionKey: false
 });
 userSchema.methods.encryptPassword = (password) => __awaiter(void 0, void 0, void 0, function* () {
     const salt = yield bcryptjs_1.default.genSalt(10);

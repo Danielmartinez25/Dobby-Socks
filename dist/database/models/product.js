@@ -22,5 +22,8 @@ const productSchema = new mongoose_1.Schema({
     comment: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "Comment" }],
     user: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "User" }],
     type: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "Type" }],
-}, {});
+}, {
+    timestamps: true,
+    versionKey: false
+});
 exports.default = (0, mongoose_1.model)("Product", productSchema);

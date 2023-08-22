@@ -9,6 +9,9 @@ const commentSchema = new Schema({
     },
     product: { type: Schema.Types.ObjectId, ref: "Product" },
     user: { type: Schema.Types.ObjectId, ref: "User" },
+}, {
+    timestamps: true,
+    versionKey: false
 });
 
 export default model<Comment>("Comment",commentSchema); 

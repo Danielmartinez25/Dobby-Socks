@@ -7,5 +7,8 @@ const cartSchema = new mongoose_1.Schema({
             product: { type: mongoose_1.Schema.Types.ObjectId, ref: "Product" },
             quantity: { type: Number }
         }]
+}, {
+    timestamps: true,
+    versionKey: false
 });
 exports.default = (0, mongoose_1.model)("Cart", cartSchema);
