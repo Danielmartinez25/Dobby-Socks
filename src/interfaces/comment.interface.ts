@@ -1,6 +1,6 @@
 import { Types } from "mongoose";
 
-export interface comment {
+export interface Comment {
     text:string;
     date:Date;
     product:Types.ObjectId;

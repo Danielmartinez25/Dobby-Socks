@@ -1,6 +1,6 @@
 import { Types } from "mongoose";
 
-export interface type {
+export interface Type {
     name:string;
     product:Types.ObjectId;
 }

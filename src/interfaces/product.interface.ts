@@ -7,7 +7,7 @@ export interface Product {
     image:string;
     stock:boolean;
     color:string;
-    brand:Types.ObjectId;
+    type:Types.ObjectId;
     cart:[Types.ObjectId];
     comment:[Types.ObjectId];
     user:[Types.ObjectId];

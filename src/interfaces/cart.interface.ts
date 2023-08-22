@@ -1,6 +1,6 @@
 import { Types } from "mongoose";
 
-export interface cart {
+export interface Cart {
     user:Types.ObjectId;
     product:[
         product:Types.ObjectId,

@@ -7,4 +7,6 @@ export interface User {
     password:void;
     phone:number;
     cart:[Types.ObjectId];
+    encryptPassword(password:string): Promise<string>;
+    validatePassword(password: string): Promise<boolean>;
 }
