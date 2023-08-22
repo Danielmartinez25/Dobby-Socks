@@ -12,9 +12,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.createJwt = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const JWT = process.env.JWT;
-exports.default = (payload) => __awaiter(void 0, void 0, void 0, function* () {
-    const token = jsonwebtoken_1.default.sign(payload, JWT || "Dobby-sock", { expiresIn: "1h" });
-    return token;
+const createJwt = (user) => __awaiter(void 0, void 0, void 0, function* () {
+    return jsonwebtoken_1.default.sign({
+        _id: user._id,
+        role: user.role
+    }, process.env.JWT_SECRET || "D0BBY-S0CK", {
+        expiresIn: "1h"
+    });
 });
+exports.createJwt = createJwt;
