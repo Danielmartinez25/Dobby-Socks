@@ -45,10 +45,9 @@ const userSchema = new mongoose_1.Schema({
         type: String,
         required: true
     },
-    role: {
-        type: String,
-        default: "user"
-    },
+    role: [{
+            type: mongoose_1.Schema.Types.ObjectId, ref: "Role"
+        }],
     cart: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "Cart" }],
 }, {
     timestamps: true,

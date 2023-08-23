@@ -6,8 +6,8 @@ export interface User {
     mail:string;
     password:string;
     avatar:string;
-    role:string;
     phone:number;
+    role:[Types.ObjectId];
     cart:[Types.ObjectId];
     encryptPassword(password:string): Promise<string>;
     validatePassword(password: string): Promise<boolean>;
