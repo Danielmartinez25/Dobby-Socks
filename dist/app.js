@@ -11,6 +11,8 @@ const morgan_1 = __importDefault(require("morgan"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const connection_1 = require("./database/connection");
 const product_1 = __importDefault(require("./routes/product"));
+const initialSetup_1 = require("./libs/initialSetup");
+(0, initialSetup_1.createRoles)();
 (0, connection_1.connectDB)();
 const app = (0, express_1.default)();
 app.use((0, morgan_1.default)("dev"));

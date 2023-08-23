@@ -6,6 +6,8 @@ import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import { connectDB } from "./database/connection";
 import productRouter from "./routes/product";
+import { createRoles } from "./libs/initialSetup";
+createRoles();
 connectDB();
 const app = express();
 app.use(morgan("dev"));
