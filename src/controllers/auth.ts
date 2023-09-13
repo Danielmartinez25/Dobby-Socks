@@ -1,18 +1,20 @@
+import user from "@/database/models/user";
 import { Request, Response } from "express";
-
-export const login = async(req:Request,res:Response) =>{
+export const register = async(req:{body},res:Response) =>{
     try {
-        res.send("Bienvenido al login");
+        const {name,surname,} = body;
+        const newUser = new user(
+
+        );
     } catch (error) {
         console.error(error);
         
     }
 };
-export const register = async(req:Request,res:Response) =>{
+export const login = async(req:{body},res:Response) =>{
     try {
-        res.send("Bienvenido al register");
+        const {} = body
     } catch (error) {
-        console.error(error);
-        
+        console.error(error); 
     }
 };
