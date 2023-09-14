@@ -14,6 +14,13 @@ const userSchema = new Schema<User>({
         min: 4,
         lowercase: true
     },
+    token : {
+        type:String
+    },
+    checked: {
+        type: Boolean,
+        default: false
+    },
     phone: {
         type: Number,
         required: true,

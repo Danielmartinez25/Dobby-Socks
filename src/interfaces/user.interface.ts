@@ -6,6 +6,8 @@ export interface User {
     mail:string;
     password:string;
     avatar:string;
+    token:string;
+    checked:boolean;
     phone:number;
     role:[Types.ObjectId];
     cart:[Types.ObjectId];
