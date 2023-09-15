@@ -39,7 +39,7 @@ const userSchema = new Schema<User>({
         type: String,
         required: true
     },
-    role : [{
+    roles : [{
         type:Schema.Types.ObjectId,ref:"Role"
     }],
     cart: [{ type: Schema.Types.ObjectId, ref: "Cart" }],

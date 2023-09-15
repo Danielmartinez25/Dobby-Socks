@@ -9,7 +9,7 @@ export interface User {
     token:string;
     checked:boolean;
     phone:number;
-    role:[Types.ObjectId];
+    roles:[Types.ObjectId];
     cart:[Types.ObjectId];
     encryptPassword(password:string): Promise<string>;
     validatePassword(password: string): Promise<boolean>;

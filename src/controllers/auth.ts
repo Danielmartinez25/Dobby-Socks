@@ -4,7 +4,7 @@ import user from "@/database/models/user";
 import generateTokenRandom from "@/helpers/generateTokenRandom";
 export const register = async({body}:Request,res:Response) =>{
     try {
-        const {name,surname,mail,password,phone,rol} = body;
+        const {name,surname,mail,password,phone} = body;
         if ([name,surname, mail, password, phone].includes("")) {
             throw createError(400, "Todos los campos son obligatorios");
         }

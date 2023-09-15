@@ -8,23 +8,47 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.register = exports.login = void 0;
-const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.login = exports.register = void 0;
+const http_errors_1 = __importDefault(require("http-errors"));
+const user_1 = __importDefault(require("@/database/models/user"));
+const generateTokenRandom_1 = __importDefault(require("@/helpers/generateTokenRandom"));
+const register = ({ body }, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        res.send("Bienvenido al login");
-    }
-    catch (error) {
-        console.error(error);
-    }
-});
-exports.login = login;
-const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        res.send("Bienvenido al register");
+        const { name, surname, mail, password, phone } = body;
+        if ([name, surname, mail, password, phone].includes("")) {
+            throw (0, http_errors_1.default)(400, "Todos los campos son obligatorios");
+        }
+        const userMail = yield user_1.default.findOne({ mail });
+        if (userMail) {
+            throw (0, http_errors_1.default)(400, "El mail se encuentra registrado");
+        }
+        const token = (0, generateTokenRandom_1.default)();
+        const NewUser = new user_1.default({
+            body
+        });
+        NewUser.token = token;
+        const userStore = yield NewUser.save();
+        return res.status(200).json({
+            ok: true,
+            status: 200,
+            data: userStore
+        });
     }
     catch (error) {
         console.error(error);
     }
 });
 exports.register = register;
+const login = ({ body }, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { mail, password } = body;
+    }
+    catch (error) {
+        console.error(error);
+    }
+});
+exports.login = login;

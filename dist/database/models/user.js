@@ -27,6 +27,13 @@ const userSchema = new mongoose_1.Schema({
         min: 4,
         lowercase: true
     },
+    token: {
+        type: String
+    },
+    checked: {
+        type: Boolean,
+        default: false
+    },
     phone: {
         type: Number,
         required: true,
@@ -45,7 +52,7 @@ const userSchema = new mongoose_1.Schema({
         type: String,
         required: true
     },
-    role: [{
+    roles: [{
             type: mongoose_1.Schema.Types.ObjectId, ref: "Role"
         }],
     cart: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "Cart" }],

@@ -1,4 +1,4 @@
-import role from "@/database/models/role";
+import role from "../database/models/role";
 export  const createRoles = async() => {
     try {
         const count = await role.estimatedDocumentCount();

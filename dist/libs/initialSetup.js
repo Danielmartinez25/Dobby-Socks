@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createRoles = void 0;
-const role_1 = __importDefault(require("@/database/models/role"));
+const role_1 = __importDefault(require("../database/models/role"));
 const createRoles = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const count = yield role_1.default.estimatedDocumentCount();
