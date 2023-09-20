@@ -11,6 +11,7 @@
     "skipLibCheck": true,
     "removeComments": true,
     "noImplicitAny": false,
+    "typeRoots": ["./node_modules/@types"],
     "paths": {
       "@/*": ["src/*"] // Configuración de rutas de importación
     },

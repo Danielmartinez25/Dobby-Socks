@@ -1,6 +1,8 @@
 import { Schema, model } from "mongoose";
 import bcrypt from "bcryptjs";
 import { User } from "@/interfaces/user.interface";
+import findOrCreate from "mongoose-findorcreate";
+import passportLocalMongoose from "passport-local-mongoose";
 const userSchema = new Schema<User>({
     name: {
         type: String,
@@ -55,5 +57,8 @@ userSchema.methods.encryptPassword = async (password:string) : Promise<string> =
 userSchema.methods.verifyPassword = async function(password:string) : Promise<boolean>{
     return await bcrypt.compare(password,this.password);
 };
+userSchema.plugin(passportLocalMongoose);
+userSchema.plugin(findOrCreate);
+
 
 export default model<User>("User", userSchema);
