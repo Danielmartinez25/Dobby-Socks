@@ -2,11 +2,14 @@ console.log("Welcome Dobby-Socks");
 import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
+import session from "express-session";
+import passport from "passport";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import { connectDB } from "./database/connection";
 import productRouter from "./routes/product";
 import { createRoles } from "./libs/initialSetup";
+
 createRoles();
 connectDB();
 const app = express();
@@ -14,6 +17,13 @@ app.use(morgan("dev"));
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
+app.use(passport.initialize);
+app.use(session({
+    secret: "Dobby-sock",
+    resave: false,
+    saveUninitialized: true,
+}));
+app.use(passport.session());
 app.use("/api/product",productRouter);
 const PORT = process.env.PORT || 3001;
 const HOST = process.env.HOST || "http://localhost";

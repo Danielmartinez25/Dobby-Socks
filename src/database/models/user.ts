@@ -41,6 +41,9 @@ const userSchema = new Schema<User>({
         type: String,
         required: true
     },
+    googleId: {
+        type : String
+    },
     roles : [{
         type:Schema.Types.ObjectId,ref:"Role"
     }],

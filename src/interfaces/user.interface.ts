@@ -8,6 +8,7 @@ export interface User {
     avatar:string;
     token:string;
     checked:boolean;
+    googleId:string;
     phone:number;
     roles:[Types.ObjectId];
     cart:[Types.ObjectId];

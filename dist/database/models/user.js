@@ -14,6 +14,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
+const mongoose_findorcreate_1 = __importDefault(require("mongoose-findorcreate"));
+const passport_local_mongoose_1 = __importDefault(require("passport-local-mongoose"));
 const userSchema = new mongoose_1.Schema({
     name: {
         type: String,
@@ -52,6 +54,9 @@ const userSchema = new mongoose_1.Schema({
         type: String,
         required: true
     },
+    googleId: {
+        type: String
+    },
     roles: [{
             type: mongoose_1.Schema.Types.ObjectId, ref: "Role"
         }],
@@ -69,4 +74,6 @@ userSchema.methods.verifyPassword = function (password) {
         return yield bcryptjs_1.default.compare(password, this.password);
     });
 };
+userSchema.plugin(passport_local_mongoose_1.default);
+userSchema.plugin(mongoose_findorcreate_1.default);
 exports.default = (0, mongoose_1.model)("User", userSchema);
